@@ -47,5 +47,6 @@ Run:
 
 ##Download ui-compressor-x.x.x.jar
 
+[https://github.com/waylau/ui-compressor/releases](https://github.com/waylau/ui-compressor/releases)
 
 
