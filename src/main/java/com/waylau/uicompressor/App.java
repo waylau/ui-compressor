@@ -99,12 +99,16 @@ public class App
 
     }
     
+    /** 
+     * Compress JS
+     * @param file File
+     */ 
     private static void compressJS( File file ) throws Exception {
  
 		Reader in = new InputStreamReader(new FileInputStream(file), charset);
 		String filePath=file.getAbsolutePath();
 
-        System.out.println( "Compress js file to :" + filePath + file.getName());
+        System.out.println( "Compress js file to :" + filePath  );
 
 		File tempFile= new File( filePath+".tempFile");
 		
@@ -144,13 +148,17 @@ public class App
 		tempFile.renameTo(file);
 		tempFile.delete();
     }
+    
+    /** 
+     * Compress CSS
+     * @param file File
+     */ 
     private static void compressCSS( File file ) throws Exception {
 
-    	
 		Reader in = new InputStreamReader(new FileInputStream(file), charset);
 		String filePath=file.getAbsolutePath();
 
-        System.out.println( "Compress css file to :" + filePath + file.getName());
+        System.out.println( "Compress css file to :" + filePath );
 
 		File tempFile= new File( filePath+".tempFile");
 		
@@ -166,6 +174,10 @@ public class App
 		tempFile.delete();
     }
     
+    /** 
+     * Scan Directory
+     * @param infile File
+     */ 
     private static void scanDirectory( File infile ) throws Exception {
 
     	if( !infile.exists() ){

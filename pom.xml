@@ -7,7 +7,7 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<name>ui-compressor</name>
+	<name>UI-Compressor</name>
 	<url>https://github.com/waylau/ui-compressor</url>
 
 
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -31,22 +31,31 @@
 
 	</dependencies>
 	<build>
-	<plugins>
-	<plugin>  
-    <groupId>org.codehaus.mojo</groupId>  
-    <artifactId>exec-maven-plugin</artifactId>  
-    <version>1.3.2</version>  
-    <executions>  
-        <execution>  
-            <goals>  
-                <goal>java</goal>  
-            </goals>  
-        </execution>  
-    </executions>  
-    <configuration>  
-        <mainClass>com.waylau.uicompressor.App</mainClass>  
-    </configuration>  
-</plugin>  
-	</plugins>
+		<!--使用Maven编译可执行的jar -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.waylau.uicompressor.App</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>assembly</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 </project>
