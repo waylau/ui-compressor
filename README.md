@@ -19,6 +19,10 @@ Run:
 
 	java -cp target/ui-compressor-1.0.0.jar com.waylau.uicompressor.App
 
+or 
+
+	java -jar target/ui-compressor-1.0.0.jar com.waylau.uicompressor.App
+
 ##Configuration 配置
 
  Configuration in `src/main/resources/config.properties`:
