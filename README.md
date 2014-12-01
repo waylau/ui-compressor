@@ -49,8 +49,16 @@ or
 	#禁用自带的所有优化措施
 	disableOptimizations = false
 
+##Screenshot 快照
+
+![](http://99btgc01.info/uploads/2014/12/compress.jpg)
+
 ##Download ui-compressor-x.x.x.jar
 
 [https://github.com/waylau/ui-compressor/releases](https://github.com/waylau/ui-compressor/releases)
+
+##Who use it
+
+##[https://github.com/waylau/waylau.github.com](https://github.com/waylau/waylau.github.com)
 
 
