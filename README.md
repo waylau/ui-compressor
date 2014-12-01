@@ -1,7 +1,7 @@
 ui-compressor
 =============
 
-UI-Compressor ,a tool for compress js and css files.
+UI-Compressor ,a tool for compressing js and css files.
 
 用于压缩 js, css 文件
 
