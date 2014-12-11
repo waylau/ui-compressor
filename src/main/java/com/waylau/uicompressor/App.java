@@ -87,10 +87,29 @@ public class App {
 				}
 			}
 
+			System.out.println("--------Copying files start------");
+			
+			long copyStime = System.currentTimeMillis();
+			
 			copyFolder(infile, outfile);
-
+			
+			long copyEtime = System.currentTimeMillis();
+			long copytime = copyEtime - copyStime;
+			
+			System.out.println("--------Copying files end,total :"+copytime +" ms ------");
+			
+			System.out.println("--------Compressing files start------");
+			
+			long compressStime = System.currentTimeMillis();
+			
+			
 			scanDirectory(new File(outfile));
-
+			
+			long compressEtime = System.currentTimeMillis();
+			long compresstime = compressEtime - compressStime;
+			
+			System.out.println("--------Compressing files end,total :"+compresstime +" ms ------");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -103,56 +122,87 @@ public class App {
 	 * @param file
 	 *            File
 	 */
-	private static void compressJS(File file) throws Exception {
+	private static void compressJS(File file) {
 
-		Reader in = new InputStreamReader(new FileInputStream(file), charset);
+		//判断文件里面是否有内容，没有就返回，不往下执行了
+		if( file.length() == 0){
+			System.out.println("File is empty :" + file.getPath());
+			return ;
+		}
+		
+		Reader in = null;
+		Writer out = null;
+		File tempFile = null;
 		String filePath = file.getAbsolutePath();
+		
+		try {
+			in= new InputStreamReader(new FileInputStream(file), charset);
 
-		System.out.println("Compress js file to :" + filePath);
 
-		File tempFile = new File(filePath + ".tempFile");
+			System.out.println("Compress js file to :" + filePath);
 
-		Writer out = new OutputStreamWriter(new FileOutputStream(tempFile),
-				charset);
+			tempFile = new File(filePath + ".tempFile");
 
-		JavaScriptCompressor jscompressor = new JavaScriptCompressor(in,
-				new ErrorReporter() {
-					public void warning(String message, String sourceName,
-							int line, String lineSource, int lineOffset) {
-						if (line < 0) {
-							System.err.println("\n[WARNING] " + message);
-						} else {
-							System.err.println("\n[WARNING] " + line + ':'
-									+ lineOffset + ':' + message);
+			out = new OutputStreamWriter(new FileOutputStream(tempFile),
+					charset);
+
+			JavaScriptCompressor jscompressor = new JavaScriptCompressor(in,
+					new ErrorReporter() {
+						public void warning(String message, String sourceName,
+								int line, String lineSource, int lineOffset) {
+							if (line < 0) {
+								System.err.println("\n[WARNING] " + message);
+							} else {
+								System.err.println("\n[WARNING] " + line + ':'
+										+ lineOffset + ':' + message);
+							}
 						}
-					}
 
-					public void error(String message, String sourceName,
-							int line, String lineSource, int lineOffset) {
-						if (line < 0) {
-							System.err.println("\n[ERROR] " + message);
-						} else {
-							System.err.println("\n[ERROR] " + line + ':'
-									+ lineOffset + ':' + message);
+						public void error(String message, String sourceName,
+								int line, String lineSource, int lineOffset) {
+							if (line < 0) {
+								System.err.println("\n[ERROR] " + message);
+							} else {
+								System.err.println("\n[ERROR] " + line + ':'
+										+ lineOffset + ':' + message);
+							}
 						}
-					}
 
-					public EvaluatorException runtimeError(String message,
-							String sourceName, int line, String lineSource,
-							int lineOffset) {
-						error(message, sourceName, line, lineSource, lineOffset);
-						return new EvaluatorException(message);
-					}
-				});
+						public EvaluatorException runtimeError(String message,
+								String sourceName, int line, String lineSource,
+								int lineOffset) {
+							error(message, sourceName, line, lineSource, lineOffset);
+							return new EvaluatorException(message);
+						}
+					});
 
-		jscompressor.compress(out, linebreak, nomunge, verbose, preserveSemi,
-				disableOptimizations);
+			jscompressor.compress(out, linebreak, nomunge, verbose, preserveSemi,
+					disableOptimizations);
 
-		out.close();
-		in.close();
-		file.delete();
-		tempFile.renameTo(file);
-		tempFile.delete();
+			file.delete();
+			tempFile.renameTo(file);
+			
+		}catch( Exception e){
+			System.out.println("Compress js file [FAILED] :" + filePath);
+			e.printStackTrace();
+		}finally{
+			try {
+				out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				in.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			tempFile.delete();
+		}
+		
+
 	}
 
 	/**

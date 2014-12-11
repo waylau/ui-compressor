@@ -5,6 +5,17 @@ UI-Compressor ,a tool for compressing js and css files.
 
 用于压缩 js, css 文件
 
+##Features 特性
+
+* 灵活配置
+* 支持对 js, css 文件的压缩
+* 忽略不想压缩的文件（或者目录）
+* 自定义编码
+* 代码混淆
+* 代码优化
+* 异常处理
+* 生成任务报告
+
 ##Usage 用法
 
 Checkout This repository:
@@ -17,11 +28,11 @@ Package the source code to JAR:
 
 Run:
 
-	java -cp target/ui-compressor-1.0.0.jar com.waylau.uicompressor.App
+	java -cp target/ui-compressor-1.1.0.jar com.waylau.uicompressor.App
 
 or 
 
-	java -jar target/ui-compressor-1.0.0.jar com.waylau.uicompressor.App
+	java -jar target/ui-compressor-1.1.0.jar com.waylau.uicompressor.App
 
 ##Configuration 配置
 
@@ -57,8 +68,39 @@ or
 
 [https://github.com/waylau/ui-compressor/releases](https://github.com/waylau/ui-compressor/releases)
 
+##Version 版本说明
+
+###v1.0.0 (2014-12-11)
+
+更新：
+
+1.修复了读空文件时的 bug 
+
+2.处理压缩命名不规范代码时的异常。对该文件保留，继续执行下个文件的压缩
+
+3.设置了执行任务开始、结束的标识
+
+4.增加了统计执行任务话费时间的功能
+
+###v1.0.0 (2014-11-17)
+
+功能：
+
+1.独立配置
+
+2.忽略不想压缩的文件（或者目录）
+
+3.自定义编码
+
+4.代码混淆
+
+5.代码优化
+
+
 ##Who use it
 
-##[https://github.com/waylau/waylau.github.com](https://github.com/waylau/waylau.github.com)
+* [https://github.com/waylau/waylau.github.com](https://github.com/waylau/waylau.github.com)
+
+
 
 
