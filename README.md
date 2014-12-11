@@ -62,7 +62,7 @@ or
 
 ##Screenshot 快照
 
-![](http://99btgc01.info/uploads/2014/12/compress.jpg)
+![](http://99btgc01.info/uploads/2014/12/uic.jpg)
 
 ##Download ui-compressor-x.x.x.jar
 
@@ -70,7 +70,7 @@ or
 
 ##Version 版本说明
 
-###v1.0.0 (2014-12-11)
+###v1.1.0 (2014-12-11)
 
 更新：
 
@@ -80,7 +80,7 @@ or
 
 3.设置了执行任务开始、结束的标识
 
-4.增加了统计执行任务话费时间的功能
+4.增加了统计执行任务话费时间的报告功能
 
 ###v1.0.0 (2014-11-17)
 
@@ -99,7 +99,7 @@ or
 
 ##Who use it
 
-* [https://github.com/waylau/waylau.github.com](https://github.com/waylau/waylau.github.com)
+* [www.waylau.com](http:www.waylau.com)
 
 
 
