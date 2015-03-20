@@ -179,25 +179,22 @@ public class App {
 			jscompressor.compress(out, linebreak, nomunge, verbose, preserveSemi,
 					disableOptimizations);
 
-			file.delete();
-			tempFile.renameTo(file);
+
 			
 		}catch( Exception e){
 			System.out.println("Compress js file [FAILED] :" + filePath);
 			e.printStackTrace();
 		}finally{
 			try {
-				out.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			try {
 				in.close();
+				out.close();
+				file.delete();
+				tempFile.renameTo(file);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+ 
 			
 			tempFile.delete();
 		}

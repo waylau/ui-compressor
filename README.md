@@ -28,11 +28,11 @@ Package the source code to JAR:
 
 Run:
 
-	java -cp target/ui-compressor-1.1.0.jar com.waylau.uicompressor.App
+	java -cp target/ui-compressor-1.2.0.jar com.waylau.uicompressor.App
 
 or 
 
-	java -jar target/ui-compressor-1.1.0.jar com.waylau.uicompressor.App
+	java -jar target/ui-compressor-1.2.0.jar com.waylau.uicompressor.App
 
 ##Configuration 配置
 
@@ -69,6 +69,13 @@ or
 [https://github.com/waylau/ui-compressor/releases](https://github.com/waylau/ui-compressor/releases)
 
 ##Version 版本说明
+
+###v1.2.0 (2015-03-20)
+
+更新：
+
+1.修复了压缩js文件时的 bug 
+ 
 
 ###v1.1.0 (2014-12-11)
 
